@@ -1,0 +1,30 @@
+<div fxLayout="column" [fxLayoutGap]="gap">
+  <h2>Creation form</h2>
+  <div fxLayout="column" fxLayoutAlign="start" fxFlex="100%">
+    <mat-form-field>
+      <mat-placeholder>Email</mat-placeholder>
+      <input matInput type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-placeholder>Role</mat-placeholder>
+      <input matInput type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-placeholder>Name</mat-placeholder>
+      <input matInput type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-placeholder>Password</mat-placeholder>
+      <input matInput type="password">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-placeholder>Confirm Password</mat-placeholder>
+      <input matInput type="password">
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="start" fxFlex="100%" fxLayoutGap="1em">
+    <button mat-raised-button color="accent">Create Account</button>
+    <button mat-raised-button color="accent">Cancel</button>
+    </div>
+  </div>
+</div>
+
