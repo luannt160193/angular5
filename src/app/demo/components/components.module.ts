@@ -22,7 +22,6 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { SliderComponent } from './slider/slider.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
-import { UserComponent } from './user/user.component';
 
 @NgModule({
   imports: [
@@ -56,7 +55,6 @@ import { UserComponent } from './user/user.component';
     SnackBarComponent,
     TooltipComponent,
     SlideToggleComponent,
-    UserComponent,
   ],
   entryComponents: [DemoDialogComponent]
 })

@@ -17,7 +17,11 @@ import { SalesSummaryWidgetModule } from '../../core/widgets/sales-summary-widge
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardService } from './dashboard.service';
-import {UserComponent} from '../components/user/user.component';
+import { UserComponent } from '../components/user/user.component';
+import { DetailUserComponent} from '../components/detail-user/detail-user.component';
+import {EditUserComponent} from '../components/edit-user/edit-user.component';
+import {ImportUserComponent} from '../components/import-user/import-user.component';
+import {DeleteUserComponent} from '../components/delete-user/delete-user.component';
 
 @NgModule({
   imports: [
@@ -42,8 +46,8 @@ import {UserComponent} from '../components/user/user.component';
     MapsWidgetModule,
     MarketWidgetModule
   ],
-  declarations: [DashboardComponent, UserComponent],
-  entryComponents: [UserComponent],
+  declarations: [DashboardComponent, UserComponent, DetailUserComponent, EditUserComponent, ImportUserComponent, DeleteUserComponent],
+  entryComponents: [UserComponent, DetailUserComponent, EditUserComponent, ImportUserComponent, DeleteUserComponent],
   providers: [DashboardService]
 })
 export class DashboardModule {

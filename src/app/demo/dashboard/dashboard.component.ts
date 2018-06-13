@@ -20,6 +20,10 @@ import { DashboardService } from './dashboard.service';
 import {DemoDialogComponent} from '../components/dialogs/dialogs.component';
 import {MatDialog} from '@angular/material';
 import {UserComponent} from '../components/user/user.component';
+import {DetailUserComponent} from '../components/detail-user/detail-user.component';
+import {EditUserComponent} from '../components/edit-user/edit-user.component';
+import {ImportUserComponent} from '../components/import-user/import-user.component';
+import {DeleteUserComponent} from '../components/delete-user/delete-user.component';
 
 
 @Component({
@@ -30,7 +34,10 @@ import {UserComponent} from '../components/user/user.component';
   host: { '[@fadeOutAnimation]': 'true' }
 })
 export class DashboardComponent implements OnInit {
-
+  tableHover: boolean;
+  tableStriped: boolean;
+  tableCondensed: boolean;
+  tableBordered: boolean;
   salesData$: Observable<ChartData>;
   totalSalesOptions: BarChartWidgetOptions = {
     title: 'Total Sales',
@@ -246,6 +253,34 @@ export class DashboardComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(UserComponent, {
+      disableClose: false
+    }).afterClosed().subscribe(result => {
+      this.result = result;
+    });
+  }
+  openDetailDialog() {
+    this.dialog.open(DetailUserComponent, {
+      disableClose: false
+    }).afterClosed().subscribe(result => {
+      this.result = result;
+    });
+  }
+  openEditDialog() {
+    this.dialog.open(EditUserComponent, {
+      disableClose: false
+    }).afterClosed().subscribe(result => {
+      this.result = result;
+    });
+  }
+  openImportDialog() {
+    this.dialog.open(ImportUserComponent, {
+      disableClose: false
+    }).afterClosed().subscribe(result => {
+      this.result = result;
+    });
+  }
+  openDeleteDialog() {
+    this.dialog.open(DeleteUserComponent, {
       disableClose: false
     }).afterClosed().subscribe(result => {
       this.result = result;
