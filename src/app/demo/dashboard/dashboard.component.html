@@ -1,4 +1,5 @@
-<fury-scrollbar class="dashboard" furyPage furyPagePadding fxLayout="column" [fxLayoutGap]="gap">
+<fury-scrollbar class="dashboard" furyPage furyPagePadding fxLayout="column" [fxLayoutGap]="gap"
+                xmlns="http://www.w3.org/1999/html">
 
   <div fxLayout="row" [fxLayoutGap]="gap">
     <div class="search-wrapper" fxLayout="row" [ngClass]="{ 'focus': focused, 'has-input': input }" fxFlex>
@@ -14,7 +15,12 @@
 
     <div fxLayout="row" fxLayoutAlign="end center" fxFlex fxLayoutGap="1em">
       <button mat-raised-button color="accent" (click)="openDialog()">Create new user</button>
-      <button mat-raised-button color="accent" (click)="openImportDialog()" >Import users</button>
+      <!--<button mat-raised-button color="accent" (click)="openImportDialog()" >Import users</button>-->
+      <input type="file" ng2FileSelect style="width: 0px" [uploader]="uploader" #file>
+      <mat-icon (click)="file.click()">file_upload</mat-icon>
+
+      <!--<button mat-icon-button="file_upload" (click)="file.click()"></button>-->
+      <!--<input type="file"  ng2FileSelect [uploader]="uploader" />-->
       <!--<input type="file" ngf [(file)]="file" />-->
     </div>
 
@@ -45,7 +51,7 @@
           <td>Actived</td>
           <td>Admin</td>
           <td fxLayout="row" fxLayoutGap="0.5em">
-            <mat-icon (click)="openDetailDialog()">details</mat-icon>
+            <mat-icon (click)="openDetailDialog()">remove_red_eye</mat-icon>
             <mat-icon (click)="openEditDialog()">edit</mat-icon>
             <mat-icon (click)="openDeleteDialog()">delete</mat-icon>
 
@@ -86,8 +92,56 @@
         </tbody>
       </table>
     </div>
-  </div>
 
+    <br>
+    <br>
+  <div *ngIf="uploader" class="col-md-8">
+    <h3>File Upload with Angular 2 and Node</h3>
+    Queue length: {{ uploader?.queue?.length }}
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th width="50%">Name</th>
+        <th>Size</th>
+        <th>Progress</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of uploader.queue">
+        <td><strong>{{ item.file.name }}</strong></td>
+        <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
+        <td>
+          <div class="progress" style="margin-bottom: 0;">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+          </div>
+        </td>
+        <td class="text-center">
+          <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+          <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+          <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+        </td>
+        <td nowrap>
+          <button type="button" class="btn btn-success btn-xs"
+                  (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+            <span class="glyphicon glyphicon-upload"></span> Upload
+          </button>
+          <button type="button" class="btn btn-warning btn-xs"
+                  (click)="item.cancel()" [disabled]="!item.isUploading">
+            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+          </button>
+          <button type="button" class="btn btn-danger btn-xs"
+                  (click)="item.remove()">
+            <span class="glyphicon glyphicon-trash"></span> Remove
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
 <router-outlet></router-outlet>
 </fury-scrollbar>
 

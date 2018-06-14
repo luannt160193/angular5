@@ -22,12 +22,15 @@ import { DetailUserComponent} from '../components/detail-user/detail-user.compon
 import {EditUserComponent} from '../components/edit-user/edit-user.component';
 import {ImportUserComponent} from '../components/import-user/import-user.component';
 import {DeleteUserComponent} from '../components/delete-user/delete-user.component';
+import { FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MaterialModule,
+    // FileUploader,
+    FileUploadModule,
 
     // Core
     AspectRatioModule,

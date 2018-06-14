@@ -24,7 +24,9 @@ import {DetailUserComponent} from '../components/detail-user/detail-user.compone
 import {EditUserComponent} from '../components/edit-user/edit-user.component';
 import {ImportUserComponent} from '../components/import-user/import-user.component';
 import {DeleteUserComponent} from '../components/delete-user/delete-user.component';
+import {FileUploader} from 'ng2-file-upload';
 
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
   selector: 'fury-dashboard',
@@ -34,6 +36,7 @@ import {DeleteUserComponent} from '../components/delete-user/delete-user.compone
   host: { '[@fadeOutAnimation]': 'true' }
 })
 export class DashboardComponent implements OnInit {
+  public uploader: FileUploader = new FileUploader({url: URL});
   tableHover: boolean;
   tableStriped: boolean;
   tableCondensed: boolean;
